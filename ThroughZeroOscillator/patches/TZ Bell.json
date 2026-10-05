@@ -1,0 +1,28 @@
+{
+ "name": "TZ Bell",
+ "type": "Bell",
+ "author": "Oroboro",
+ "format": "modern",
+ "notes": "ThroughZero, a compiled module (OroboroModules/ThroughZeroOscillator): a sine VCO three times the note's frequency (Tune 19) into ThroughZero's FM, through zero, so the bell stays in tune however deep the FM goes. One envelope opens the VCA and, through an Atten, the FM's Index: the strike is bright and the ring mellows.\n\nTry:\n- The VCO's Tune: 12 for a hollow tone, 7 for something stranger, 0 for brass.\n- ThroughZero's Index, and its Mode (Lin stops at zero: hear the pitch go sharp).\n- The Atten's ×A: how much brighter the strike is.",
+ "voice_mode": "poly",
+ "voices": 6,
+ "modules": [
+  {"kind": "oro/Keys", "id": 1, "pos": [0, 0], "params": [0]},
+  {"kind": "oro/VCO", "id": 2, "pos": [0, 5], "params": [19.0, 2.0, 1.0, 0.0, 0.5, 0.0], "name": "Modulator"},
+  {"kind": "native/ThroughZero", "id": 3, "pos": [1, 0], "params": [0.0, 0.0, 0.6, 0.0, 0.0]},
+  {"kind": "oro/ADSR", "id": 4, "pos": [1, 8], "params": [0.002, 1.8, 1.5, 0.0, 0.5, 0.3, 1.0, 0.0]},
+  {"kind": "oro/Atten", "id": 5, "pos": [1, 15], "params": [0.35, 0.0, 1.0, 0.0]},
+  {"kind": "oro/VCA", "id": 6, "pos": [2, 0], "params": [0.8, 0.0]},
+  {"kind": "oro/Out", "id": 7, "pos": [2, 5], "params": [0.0, 2.5, 0.0]}
+ ],
+ "cables": [
+  {"from": 1, "from_port": 1, "to": 4, "to_port": 0},
+  {"from": 2, "from_port": 0, "to": 3, "to_port": 1},
+  {"from": 4, "from_port": 0, "to": 5, "to_port": 0},
+  {"from": 5, "from_port": 0, "to": 3, "to_port": 2},
+  {"from": 3, "from_port": 0, "to": 6, "to_port": 0},
+  {"from": 4, "from_port": 0, "to": 6, "to_port": 1},
+  {"from": 6, "from_port": 0, "to": 7, "to_port": 0},
+  {"from": 6, "from_port": 0, "to": 7, "to_port": 1}
+ ]
+}

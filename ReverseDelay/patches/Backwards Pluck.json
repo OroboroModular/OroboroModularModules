@@ -1,0 +1,26 @@
+{
+ "name": "Backwards Pluck",
+ "type": "Pluck",
+ "author": "Oroboro",
+ "format": "modern",
+ "notes": "ReverseDelay, a compiled module (OroboroModules/ReverseDelay): a plucked string from the keys, into the FX area, where ReverseDelay plays each half second back reversed: the note swells in from its tail and ends on its pluck.\n\nTry:\n- Time: short for a backwards flutter, long for whole phrases turned round.\n- Feedback: the next echo is reversed again, so forwards; more of it, and the phrases pile up.\n- Tone, and Mix (all wet for the backwards part alone).",
+ "voice_mode": "poly",
+ "voices": 6,
+ "modules": [
+  {"kind": "oro/Keys", "id": 1, "pos": [0, 0], "params": [0]},
+  {"kind": "oro/Pluck", "id": 2, "pos": [1, 0], "params": [0.0, 0.0, 1.0, 2.5, 0.35, 0.7, 1.0]},
+  {"kind": "oro/Out", "id": 3, "pos": [2, 0], "params": [1.0, 2.0, 0.0]},
+  {"kind": "oro/In", "id": 257, "pos": [0, 0], "params": [1.0], "area": "fx"},
+  {"kind": "native/ReverseDelay", "id": 258, "pos": [1, 0], "params": [0.5, 0.35, 0.75, 0.5], "area": "fx"},
+  {"kind": "oro/Out", "id": 259, "pos": [2, 0], "params": [0.0, 2.5, 0.0], "area": "fx"}
+ ],
+ "cables": [
+  {"from": 1, "from_port": 2, "to": 2, "to_port": 1},
+  {"from": 2, "from_port": 0, "to": 3, "to_port": 0},
+  {"from": 2, "from_port": 0, "to": 3, "to_port": 1},
+  {"from": 257, "from_port": 0, "to": 258, "to_port": 0},
+  {"from": 257, "from_port": 1, "to": 258, "to_port": 1},
+  {"from": 258, "from_port": 0, "to": 259, "to_port": 0},
+  {"from": 258, "from_port": 1, "to": 259, "to_port": 1}
+ ]
+}

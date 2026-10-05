@@ -1,0 +1,22 @@
+[package]
+name = "reverse-reverb"
+version = "2.0.0"
+edition = "2021"
+description = "ReverseReverb: a reverb heard backwards, its tail swelling up into the sound. A compiled module for Oroboro Modular."
+publish = false
+
+[lib]
+# the library the plugin loads (reversereverb.dll, libreversereverb.so, libreversereverb.dylib)
+name = "reversereverb"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+oroboro-module = { git = "https://github.com/OroboroModular/OroboroModularSDK", tag = "v0.1.0" }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+# a project of its own, outside any workspace around it
+[workspace]

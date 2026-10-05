@@ -1,0 +1,26 @@
+{
+ "name": "Reverse Swell",
+ "type": "Pad",
+ "author": "Oroboro",
+ "format": "modern",
+ "notes": "ReverseReverb, a compiled module (OroboroModules/ReverseReverb): a plucked string from the keys, into the FX area, where ReverseReverb plays the string's reverb backwards: a swell rises out of nothing and stops on the note it came from.\n\nTry:\n- Length: how long the swell takes (play slowly, at about that pace).\n- Decay: a longer reverb makes a fuller swell; Damp darkens it.\n- Mix: half and half keeps the pluck, all wet leaves the ghost alone.",
+ "voice_mode": "poly",
+ "voices": 6,
+ "modules": [
+  {"kind": "oro/Keys", "id": 1, "pos": [0, 0], "params": [0]},
+  {"kind": "oro/Pluck", "id": 2, "pos": [1, 0], "params": [0.0, 0.0, 1.0, 2.5, 0.35, 0.7, 1.0]},
+  {"kind": "oro/Out", "id": 3, "pos": [2, 0], "params": [1.0, 2.0, 0.0]},
+  {"kind": "oro/In", "id": 257, "pos": [0, 0], "params": [1.0], "area": "fx"},
+  {"kind": "native/ReverseReverb", "id": 258, "pos": [1, 0], "params": [0.8, 3.5, 0.35, 0.6], "area": "fx"},
+  {"kind": "oro/Out", "id": 259, "pos": [2, 0], "params": [0.0, 3.0, 0.0], "area": "fx"}
+ ],
+ "cables": [
+  {"from": 1, "from_port": 2, "to": 2, "to_port": 1},
+  {"from": 2, "from_port": 0, "to": 3, "to_port": 0},
+  {"from": 2, "from_port": 0, "to": 3, "to_port": 1},
+  {"from": 257, "from_port": 0, "to": 258, "to_port": 0},
+  {"from": 257, "from_port": 1, "to": 258, "to_port": 1},
+  {"from": 258, "from_port": 0, "to": 259, "to_port": 0},
+  {"from": 258, "from_port": 1, "to": 259, "to_port": 1}
+ ]
+}

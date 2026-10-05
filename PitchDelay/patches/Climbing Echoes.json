@@ -1,0 +1,26 @@
+{
+ "name": "Climbing Echoes",
+ "type": "Pluck",
+ "author": "Oroboro",
+ "format": "modern",
+ "notes": "PitchDelay, a compiled module (OroboroModules/PitchDelay): a plucked string from the keys, into the FX area, where each echo comes back a fifth higher than the last, climbing away as it fades.\n\nTry:\n- Pitch: 12 for octaves, -12 to fall into the dark, -5 or 5 for a slow spiral.\n- Feedback: how many steps the climb takes.\n- Time, and Tone (darker echoes keep the high steps soft).",
+ "voice_mode": "poly",
+ "voices": 6,
+ "modules": [
+  {"kind": "oro/Keys", "id": 1, "pos": [0, 0], "params": [0]},
+  {"kind": "oro/Pluck", "id": 2, "pos": [1, 0], "params": [0.0, 0.0, 1.0, 2.5, 0.35, 0.7, 1.0]},
+  {"kind": "oro/Out", "id": 3, "pos": [2, 0], "params": [1.0, 2.0, 0.0]},
+  {"kind": "oro/In", "id": 257, "pos": [0, 0], "params": [1.0], "area": "fx"},
+  {"kind": "native/PitchDelay", "id": 258, "pos": [1, 0], "params": [0.35, 0.6, 7.0, 0.0, 0.65, 0.5], "area": "fx"},
+  {"kind": "oro/Out", "id": 259, "pos": [2, 0], "params": [0.0, 2.5, 0.0], "area": "fx"}
+ ],
+ "cables": [
+  {"from": 1, "from_port": 2, "to": 2, "to_port": 1},
+  {"from": 2, "from_port": 0, "to": 3, "to_port": 0},
+  {"from": 2, "from_port": 0, "to": 3, "to_port": 1},
+  {"from": 257, "from_port": 0, "to": 258, "to_port": 0},
+  {"from": 257, "from_port": 1, "to": 258, "to_port": 1},
+  {"from": 258, "from_port": 0, "to": 259, "to_port": 0},
+  {"from": 258, "from_port": 1, "to": 259, "to_port": 1}
+ ]
+}

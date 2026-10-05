@@ -1,0 +1,21 @@
+{
+ "name": "Spectrum",
+ "type": "Utility",
+ "author": "Oroboro",
+ "notes": "Spectrum, a compiled module (OroboroModules/SpectrumAnalyser): a saw from the keys through a low-pass filter whose cutoff an LFO sweeps, into Spectrum, through it to the output. Watch the harmonics; point at the screen to read a frequency, click it to freeze the picture.",
+ "voice_mode": "mono",
+ "modules": [
+  {"kind": "oro/VCO", "id": 1, "pos": [0, 0]},
+  {"kind": "oro/LFO", "id": 2, "pos": [0, 9], "params": [0.2]},
+  {"kind": "oro/SVF", "id": 3, "pos": [1, 0], "params": [700, 0.45, 0, 0.5, 0]},
+  {"kind": "native/Spectrum", "id": 4, "pos": [2, 0], "params": [0, -96, 0.7, 0, 1]},
+  {"kind": "oro/Out", "id": 5, "pos": [1, 12], "params": [0, 1.5, 0]}
+ ],
+ "cables": [
+  {"from": 1, "from_port": 2, "to": 3, "to_port": 0},
+  {"from": 2, "from_port": 0, "to": 3, "to_port": 2},
+  {"from": 3, "from_port": 0, "to": 4, "to_port": 0},
+  {"from": 4, "from_port": 0, "to": 5, "to_port": 0},
+  {"from": 4, "from_port": 1, "to": 5, "to_port": 1}
+ ]
+}

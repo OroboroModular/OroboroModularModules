@@ -1,0 +1,22 @@
+[package]
+name = "reverse-delay"
+version = "2.0.0"
+edition = "2021"
+description = "ReverseDelay: echoes that play backwards, swelling in from their tails. A compiled module for Oroboro Modular."
+publish = false
+
+[lib]
+# the library the plugin loads (reversedelay.dll, libreversedelay.so, libreversedelay.dylib)
+name = "reversedelay"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+oroboro-module = { git = "https://github.com/OroboroModular/OroboroModularSDK", tag = "v0.1.0" }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+
+# a project of its own, outside any workspace around it
+[workspace]

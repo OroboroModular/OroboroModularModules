@@ -1,0 +1,23 @@
+{
+ "name": "Ping Pong",
+ "type": "Pluck",
+ "author": "Oroboro",
+ "notes": "PingPong, a compiled Faust module (OroboroModules/PingPongDelay): plucked strings in the voice area, and one echo for all of them in the FX area, bouncing left, right, left. Play short notes and leave room. Time is the gap between a repeat on one side and the next on the other.",
+ "voice_mode": "poly",
+ "voices": 4,
+ "modules": [
+  {"kind": "oro/Pluck", "id": 1, "pos": [0, 0], "params": [0, 0, 1, 1.5, 0.4, 0.7, 1]},
+  {"kind": "oro/Out", "id": 2, "name": "To FX", "pos": [1, 0], "params": [1, 2.0, 0]},
+  {"kind": "oro/In", "id": 257, "area": "fx", "pos": [0, 0]},
+  {"kind": "faust/PingPong", "id": 258, "area": "fx", "pos": [1, 0], "params": [375, 55, 6000, 80, 100, 40]},
+  {"kind": "oro/Out", "id": 259, "area": "fx", "pos": [2, 0], "params": [0, 1.6, 0]}
+ ],
+ "cables": [
+  {"from": 1, "from_port": 0, "to": 2, "to_port": 0},
+  {"from": 1, "from_port": 0, "to": 2, "to_port": 1},
+  {"from": 257, "from_port": 0, "to": 258, "to_port": 0},
+  {"from": 257, "from_port": 1, "to": 258, "to_port": 1},
+  {"from": 258, "from_port": 0, "to": 259, "to_port": 0},
+  {"from": 258, "from_port": 1, "to": 259, "to_port": 1}
+ ]
+}
